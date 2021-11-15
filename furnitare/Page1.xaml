@@ -21,10 +21,10 @@
         </Button>
         <TextBox x:Name="t4" HorizontalAlignment="Left" Height="77" Margin="131,627,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
         <Label Content="введите каптчу с картинки" HorizontalAlignment="Left" Margin="131,709,0,0" VerticalAlignment="Top" Width="258" FontSize="16"/>
-        <PasswordBox x:Name="t2" HorizontalAlignment="Left" Margin="131,368,0,0" VerticalAlignment="Top" Height="34" Width="444" Foreground="Black" Background="#FFBF5959" BorderBrush="Black"/>
         <Label Content="Регистрация" HorizontalAlignment="Left" Margin="554,54,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Confirmed Password" HorizontalAlignment="Left" Margin="131,402,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <PasswordBox x:Name="t22" HorizontalAlignment="Left" Margin="131,476,0,0" VerticalAlignment="Top" Height="34" Width="444" Foreground="Black" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="t2" HorizontalAlignment="Left" Height="36" Margin="131,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="t22" HorizontalAlignment="Left" Height="36" Margin="131,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
 
     </Grid>
 </Window>

@@ -11,11 +11,12 @@ namespace furnitare
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+
     public partial class Sotrudnik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sotrudnik()
+        public Sotrudnik ()
         {
             this.Shop = new HashSet<Shop>();
         }
