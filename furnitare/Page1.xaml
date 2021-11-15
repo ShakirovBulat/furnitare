@@ -9,15 +9,18 @@
 
     <Grid>
         <Label Content="" HorizontalAlignment="Left" Margin="545,142,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="131,294,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <TextBox x:Name="t1" HorizontalAlignment="Left" Height="36" Margin="131,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
-        <Button x:Name="register" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="678,258,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48"/>
+        <Button x:Name="register" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="678,258,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="register_Click"/>
         <Button x:Name="authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="1078,442,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="authorization_Click"/>
         <Label Content="Регистрация" HorizontalAlignment="Left" Margin="554,54,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <Label Content="Confirmed Password" HorizontalAlignment="Left" Margin="131,402,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <TextBox x:Name="t2" HorizontalAlignment="Left" Height="36" Margin="131,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
-        <TextBox x:Name="t22" HorizontalAlignment="Left" Height="36" Margin="131,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="lastTB" HorizontalAlignment="Left" Height="36" Margin="131,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="firsTB" HorizontalAlignment="Left" Height="36" Margin="131,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="PervTB" HorizontalAlignment="Left" Height="36" Margin="131,576,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="131,224,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="131,361,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="131,497,0,0" VerticalAlignment="Top" FontSize="48"/>
+        <DatePicker x:Name="dtdatetime" HorizontalAlignment="Left" Margin="758,506,0,0" VerticalAlignment="Top" Height="106" Width="272"/>
+        <TextBox x:Name="IdTb" HorizontalAlignment="Left" Height="36" Margin="131,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="137,109,0,0" VerticalAlignment="Top" FontSize="48"/>
 
     </Grid>
 </Window>

@@ -20,47 +20,10 @@ namespace furnitare
     /// </summary>
     public partial class Page1 : Window
     {
+        public static Sotrudnik authUser;
         public Page1()
         {
             InitializeComponent();
-        }
-        private void reset_Click(object sender, RoutedEventArgs e)
-        {
-            String allowchar = " ";
-
-            allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
-
-            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z";
-
-            allowchar += "1,2,3,4,5,6,7,8,9,0";
-
-            char[] a = { ',' };
-
-            String[] ar = allowchar.Split(a);
-
-            String pwd = " ";
-
-            string temp = " ";
-
-            Random r = new Random();
-
-
-
-            for (int i = 0; i < 6; i++)
-
-            {
-
-                temp = ar[(r.Next(0, ar.Length))];
-
-
-
-                pwd += temp;
-
-            }
-
-
-
-            t4.Text = pwd;
         }
 
         private void authorization_Click(object sender, RoutedEventArgs e)
@@ -68,6 +31,25 @@ namespace furnitare
             MainWindow mw = new MainWindow();
             this.Close();
             mw.Show();
+        }
+
+        private void register_Click(object sender, RoutedEventArgs e)
+        {
+            if (lastTB.Text == "" || firsTB.Text == "")
+            {
+                MessageBox.Show("Введите все данные");
+            }
+            else
+            {
+                Sotrudnik client = new Sotrudnik();
+                client.Имя = firsTB.Text;
+                client.Фамилия = lastTB.Text;
+                client.Отчество = PervTB.Text;
+                client.ДатаРождения = dtdatetime.SelectedDate.Value;
+                client.Id_Sotrudnik = Convert.ToInt32(IdTb.Text);
+                MainWindow.db.SaveChanges();
+                MessageBox.Show("Succesfull");
+            }
         }
     }
 }
