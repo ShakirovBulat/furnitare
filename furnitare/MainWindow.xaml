@@ -10,10 +10,10 @@
         <Label Content="Авторизация" HorizontalAlignment="Left" Margin="554,54,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="131,294,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <TextBox x:Name="t1" HorizontalAlignment="Left" Height="36" Margin="131,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <TextBox x:Name="LoginTb" HorizontalAlignment="Left" Height="36" Margin="131,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
         <Button x:Name="login" Content="Войти" HorizontalAlignment="Left" Margin="131,445,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="login_Click"/>
         <Button x:Name="register" Content="Регистрация" HorizontalAlignment="Left" Margin="777,294,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="register_Click"/>
-        <TextBox x:Name="t2" HorizontalAlignment="Left" Height="36" Margin="131,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
+        <PasswordBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="131,368,0,0" VerticalAlignment="Top" Height="42" Width="347" Background="#FFBF5959" BorderBrush="Black"/>
 
     </Grid>
 </Window>

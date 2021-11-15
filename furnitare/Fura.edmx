@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Furniture_ShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Furniture_ShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Doljnost">
+          <Key>
+            <PropertyRef Name="Id_Doljnost" />
+          </Key>
+          <Property Name="Id_Doljnost" Type="int" Nullable="false" />
+          <Property Name="Namimen" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Furniture">
           <Key>
             <PropertyRef Name="Id_Furniture" />
@@ -17,6 +24,13 @@
           <Property Name="Цена" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Название" Type="nvarchar" MaxLength="50" />
           <Property Name="Количество" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_Gender" />
+          </Key>
+          <Property Name="Id_Gender" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -47,8 +61,8 @@
           <Property Name="Id_Shop" Type="int" Nullable="false" />
           <Property Name="Id_Sklad" Type="int" Nullable="false" />
           <Property Name="Id_Sotrudnik" Type="int" Nullable="false" />
-          <Property Name="Адресс" Type="varchar" MaxLength="50" />
-          <Property Name="ТелНомер" Type="decimal" Precision="11" Scale="0" />
+          <Property Name="adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelNomer" Type="decimal" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="Sklad">
           <Key>
@@ -58,15 +72,16 @@
           <Property Name="Id_Furniture" Type="int" Nullable="false" />
           <Property Name="НомерСклада" Type="int" />
         </EntityType>
-        <EntityType Name="Sotrudnik">
+        <EntityType Name="Sotrudniki">
           <Key>
-            <PropertyRef Name="Id_Sotrudnik" />
+            <PropertyRef Name="Id_Sotrudniki" />
           </Key>
-          <Property Name="Id_Sotrudnik" Type="int" Nullable="false" />
-          <Property Name="Фамилия" Type="nvarchar" MaxLength="12" />
-          <Property Name="Имя" Type="nvarchar" MaxLength="12" />
-          <Property Name="Отчество" Type="nvarchar" MaxLength="12" />
-          <Property Name="ДатаРождения" Type="datetime" />
+          <Property Name="Id_Sotrudniki" Type="int" Nullable="false" />
+          <Property Name="Id_Gender" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="date" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -84,6 +99,16 @@
           </Key>
           <Property Name="id_TypeFurniture" Type="int" Nullable="false" />
           <Property Name="ТипМебели" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Id_Sotrudniki" Type="int" Nullable="false" />
+          <Property Name="Id_Doljnost" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Furniture_Material">
           <End Role="Material" Type="Self.Material" Multiplicity="1" />
@@ -145,12 +170,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shop_Sotrudnik">
-          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="1" />
+        <Association Name="FK_Shop_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sotrudnik">
-              <PropertyRef Name="Id_Sotrudnik" />
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="Id_Sotrudniki" />
             </Principal>
             <Dependent Role="Shop">
               <PropertyRef Name="Id_Sotrudnik" />
@@ -166,6 +191,42 @@
             </Principal>
             <Dependent Role="Sklad">
               <PropertyRef Name="Id_Furniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_Gender" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Id_Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="Id_Doljnost" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Id_Doljnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="Id_Sotrudniki" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Id_Sotrudniki" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -201,15 +262,18 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище Furniture_ShopModelContainer">
+          <EntitySet Name="Doljnost" EntityType="Self.Doljnost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Furniture" EntityType="Self.Furniture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postavshik" EntityType="Self.Postavshik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proizvoditel" EntityType="Self.Proizvoditel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeFurniture" EntityType="Self.TypeFurniture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Furniture_Material" Association="Self.FK_Furniture_Material">
             <End Role="Material" EntitySet="Material" />
             <End Role="Furniture" EntitySet="Furniture" />
@@ -230,20 +294,39 @@
             <End Role="Sklad" EntitySet="Sklad" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <AssociationSet Name="FK_Shop_Sotrudnik" Association="Self.FK_Shop_Sotrudnik">
-            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          <AssociationSet Name="FK_Shop_Sotrudniki" Association="Self.FK_Shop_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
           <AssociationSet Name="FK_Sklad_Furniture" Association="Self.FK_Sklad_Furniture">
             <End Role="Furniture" EntitySet="Furniture" />
             <End Role="Sklad" EntitySet="Sklad" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Gender" Association="Self.FK_Sotrudniki_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Doljnost" Association="Self.FK_User_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Sotrudniki" Association="Self.FK_User_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Furniture_ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Doljnost">
+          <Key>
+            <PropertyRef Name="Id_Doljnost" />
+          </Key>
+          <Property Name="Id_Doljnost" Type="Int32" Nullable="false" />
+          <Property Name="Namimen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Doljnost" FromRole="Doljnost" ToRole="User" />
+        </EntityType>
         <EntityType Name="Furniture">
           <Key>
             <PropertyRef Name="Id_Furniture" />
@@ -261,6 +344,14 @@
           <NavigationProperty Name="Proizvoditel" Relationship="Self.FK_Furniture_Proizvoditel" FromRole="Furniture" ToRole="Proizvoditel" />
           <NavigationProperty Name="TypeFurniture" Relationship="Self.FK_Furniture_TypeFurniture" FromRole="Furniture" ToRole="TypeFurniture" />
           <NavigationProperty Name="Sklad" Relationship="Self.FK_Sklad_Furniture" FromRole="Furniture" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_Gender" />
+          </Key>
+          <Property Name="Id_Gender" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_Gender" FromRole="Gender" ToRole="Sotrudniki" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -294,10 +385,10 @@
           <Property Name="Id_Shop" Type="Int32" Nullable="false" />
           <Property Name="Id_Sklad" Type="Int32" Nullable="false" />
           <Property Name="Id_Sotrudnik" Type="Int32" Nullable="false" />
-          <Property Name="Адресс" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ТелНомер" Type="Decimal" Precision="11" Scale="0" />
+          <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelNomer" Type="Decimal" Precision="11" Scale="0" />
           <NavigationProperty Name="Sklad" Relationship="Self.FK_Shop_Sklad" FromRole="Shop" ToRole="Sklad" />
-          <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Shop_Sotrudnik" FromRole="Shop" ToRole="Sotrudnik" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Shop_Sotrudniki" FromRole="Shop" ToRole="Sotrudniki" />
         </EntityType>
         <EntityType Name="Sklad">
           <Key>
@@ -309,16 +400,19 @@
           <NavigationProperty Name="Furniture" Relationship="Self.FK_Sklad_Furniture" FromRole="Sklad" ToRole="Furniture" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Sklad" FromRole="Sklad" ToRole="Shop" />
         </EntityType>
-        <EntityType Name="Sotrudnik">
+        <EntityType Name="Sotrudniki">
           <Key>
-            <PropertyRef Name="Id_Sotrudnik" />
+            <PropertyRef Name="Id_Sotrudniki" />
           </Key>
-          <Property Name="Id_Sotrudnik" Type="Int32" Nullable="false" />
-          <Property Name="Фамилия" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Имя" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Отчество" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="ДатаРождения" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Sotrudnik" FromRole="Sotrudnik" ToRole="Shop" />
+          <Property Name="Id_Sotrudniki" Type="Int32" Nullable="false" />
+          <Property Name="Id_Gender" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Sotrudniki_Gender" FromRole="Sotrudniki" ToRole="Gender" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Sotrudniki" FromRole="Sotrudniki" ToRole="Shop" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Sotrudniki" FromRole="Sotrudniki" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -338,6 +432,30 @@
           <Property Name="ТипМебели" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Furniture" Relationship="Self.FK_Furniture_TypeFurniture" FromRole="TypeFurniture" ToRole="Furniture" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Id_Sotrudniki" Type="Int32" Nullable="false" />
+          <Property Name="Id_Doljnost" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Doljnost" Relationship="Self.FK_User_Doljnost" FromRole="User" ToRole="Doljnost" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_User_Sotrudniki" FromRole="User" ToRole="Sotrudniki" />
+        </EntityType>
+        <Association Name="FK_User_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="Id_Doljnost" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Id_Doljnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Furniture_Material">
           <End Role="Material" Type="Self.Material" Multiplicity="1" />
           <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
@@ -398,6 +516,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sotrudniki_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_Gender" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="Id_Gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shop_Sklad">
           <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
@@ -410,28 +540,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Shop_Sotrudnik">
-          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="1" />
+        <Association Name="FK_Shop_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sotrudnik">
-              <PropertyRef Name="Id_Sotrudnik" />
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="Id_Sotrudniki" />
             </Principal>
             <Dependent Role="Shop">
               <PropertyRef Name="Id_Sotrudnik" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="Id_Sotrudniki" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Id_Sotrudniki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Furniture_ShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Doljnost" EntityType="Self.Doljnost" />
           <EntitySet Name="Furniture" EntityType="Self.Furniture" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
           <EntitySet Name="Material" EntityType="Self.Material" />
           <EntitySet Name="Postavshik" EntityType="Self.Postavshik" />
           <EntitySet Name="Proizvoditel" EntityType="Self.Proizvoditel" />
           <EntitySet Name="Shop" EntityType="Self.Shop" />
           <EntitySet Name="Sklad" EntityType="Self.Sklad" />
-          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TypeFurniture" EntityType="Self.TypeFurniture" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_User_Doljnost" Association="Self.FK_User_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_Furniture_Material" Association="Self.FK_Furniture_Material">
             <End Role="Material" EntitySet="Material" />
             <End Role="Furniture" EntitySet="Furniture" />
@@ -452,13 +601,21 @@
             <End Role="Furniture" EntitySet="Furniture" />
             <End Role="Sklad" EntitySet="Sklad" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Gender" Association="Self.FK_Sotrudniki_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
           <AssociationSet Name="FK_Shop_Sklad" Association="Self.FK_Shop_Sklad">
             <End Role="Sklad" EntitySet="Sklad" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <AssociationSet Name="FK_Shop_Sotrudnik" Association="Self.FK_Shop_Sotrudnik">
-            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          <AssociationSet Name="FK_Shop_Sotrudniki" Association="Self.FK_Shop_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
             <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Sotrudniki" Association="Self.FK_User_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -508,6 +665,14 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище Furniture_ShopModelContainer" CdmEntityContainer="Furniture_ShopEntities">
+          <EntitySetMapping Name="Doljnost">
+            <EntityTypeMapping TypeName="Furniture_ShopModel.Doljnost">
+              <MappingFragment StoreEntitySet="Doljnost">
+                <ScalarProperty Name="Id_Doljnost" ColumnName="Id_Doljnost" />
+                <ScalarProperty Name="Namimen" ColumnName="Namimen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Furniture">
             <EntityTypeMapping TypeName="Furniture_ShopModel.Furniture">
               <MappingFragment StoreEntitySet="Furniture">
@@ -519,6 +684,14 @@
                 <ScalarProperty Name="Цена" ColumnName="Цена" />
                 <ScalarProperty Name="Название" ColumnName="Название" />
                 <ScalarProperty Name="Количество" ColumnName="Количество" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Furniture_ShopModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id_Gender" ColumnName="Id_Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -553,8 +726,8 @@
                 <ScalarProperty Name="Id_Shop" ColumnName="Id_Shop" />
                 <ScalarProperty Name="Id_Sklad" ColumnName="Id_Sklad" />
                 <ScalarProperty Name="Id_Sotrudnik" ColumnName="Id_Sotrudnik" />
-                <ScalarProperty Name="Адресс" ColumnName="Адресс" />
-                <ScalarProperty Name="ТелНомер" ColumnName="ТелНомер" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="TelNomer" ColumnName="TelNomer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -567,14 +740,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sotrudnik">
-            <EntityTypeMapping TypeName="Furniture_ShopModel.Sotrudnik">
-              <MappingFragment StoreEntitySet="Sotrudnik">
-                <ScalarProperty Name="Id_Sotrudnik" ColumnName="Id_Sotrudnik" />
-                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
-                <ScalarProperty Name="Имя" ColumnName="Имя" />
-                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
-                <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
+          <EntitySetMapping Name="Sotrudniki">
+            <EntityTypeMapping TypeName="Furniture_ShopModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="Id_Sotrudniki" ColumnName="Id_Sotrudniki" />
+                <ScalarProperty Name="Id_Gender" ColumnName="Id_Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -594,6 +768,17 @@
               <MappingFragment StoreEntitySet="TypeFurniture">
                 <ScalarProperty Name="id_TypeFurniture" ColumnName="id_TypeFurniture" />
                 <ScalarProperty Name="ТипМебели" ColumnName="ТипМебели" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Furniture_ShopModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id_Sotrudniki" ColumnName="Id_Sotrudniki" />
+                <ScalarProperty Name="Id_Doljnost" ColumnName="Id_Doljnost" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

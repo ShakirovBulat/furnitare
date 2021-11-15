@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace furnitare
 {
     /// <summary>
@@ -20,10 +21,11 @@ namespace furnitare
     /// </summary>
     public partial class Page1 : Window
     {
-        public static Sotrudnik authUser;
         public Page1()
         {
             InitializeComponent();
+            GenderCB.ItemsSource = MainWindow.db.Gender.ToList();
+            GenderCB.DisplayMemberPath = "Name";
         }
 
         private void authorization_Click(object sender, RoutedEventArgs e)
@@ -38,15 +40,29 @@ namespace furnitare
             if (lastTB.Text == "" || firsTB.Text == "")
             {
                 MessageBox.Show("Введите все данные");
-            }
+            } 
             else
             {
-                Sotrudnik client = new Sotrudnik();
-                client.Имя = firsTB.Text;
-                client.Фамилия = lastTB.Text;
-                client.Отчество = PervTB.Text;
-                client.ДатаРождения = dtdatetime.SelectedDate.Value;
-                client.Id_Sotrudnik = Convert.ToInt32(IdTb.Text);
+                
+                var selectedGender = GenderCB.SelectedItem as Gender;
+                Sotrudniki client = new Sotrudniki();
+                User user = new User();
+                
+
+                client.FirstName= firsTB.Text;
+                client.LastName = lastTB.Text;
+                client.Patronymic = PervTB.Text;
+                client.BirthDay = dtdatetime.SelectedDate.Value;
+                client.Id_Gender = selectedGender.Id_Gender;
+
+               
+
+                user.Login = LoginTB.Text;
+                user.Password = PasswordTB.Password;
+                user.Id_Doljnost = 2;
+                user.Id_Sotrudniki = client.Id_Sotrudniki;
+                MainWindow.db.User.Add(user);
+                MainWindow.db.Sotrudniki.Add(client);
                 MainWindow.db.SaveChanges();
                 MessageBox.Show("Succesfull");
             }

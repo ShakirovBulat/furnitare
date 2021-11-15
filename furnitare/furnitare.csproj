@@ -64,46 +64,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Fura.cs">
+    <Compile Include="Doljnost.cs">
+      <DependentUpon>fura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fura.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fura.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fura.edmx</DependentUpon>
     </Compile>
     <Compile Include="Furniture.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gender.cs">
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Material.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Postavshik.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Proizvoditel.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Shop.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Sklad.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sotrudnik.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+    <Compile Include="Sotrudniki.cs">
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="TypeFurniture.cs">
-      <DependentUpon>Fura.tt</DependentUpon>
+      <DependentUpon>fura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -113,21 +135,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Fura.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Fura.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Fura.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Fura.edmx</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,12 +166,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Fura.edmx">
+    <EntityDeploy Include="fura.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Fura.Designer.cs</LastGenOutput>
+      <LastGenOutput>fura.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Fura.edmx.diagram">
-      <DependentUpon>Fura.edmx</DependentUpon>
+    <None Include="fura.edmx.diagram">
+      <DependentUpon>fura.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -167,20 +183,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Fura.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Fura.Context.cs</LastGenOutput>
-      <DependentUpon>Fura.edmx</DependentUpon>
-    </Content>
-    <Content Include="Fura.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Fura.edmx</DependentUpon>
-      <LastGenOutput>Fura.cs</LastGenOutput>
-    </Content>
     <Resource Include="resource\i.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fura.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fura.edmx</DependentUpon>
+      <LastGenOutput>fura.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="fura.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fura.edmx</DependentUpon>
+      <LastGenOutput>fura.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

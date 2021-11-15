@@ -12,15 +12,18 @@ namespace furnitare
     using System;
     using System.Collections.Generic;
     
-    public partial class Shop
+    public partial class Gender
     {
-        public int Id_Shop { get; set; }
-        public int Id_Sklad { get; set; }
-        public int Id_Sotrudnik { get; set; }
-        public string adress { get; set; }
-        public Nullable<decimal> TelNomer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Gender()
+        {
+            this.Sotrudniki = new HashSet<Sotrudniki>();
+        }
     
-        public virtual Sklad Sklad { get; set; }
-        public virtual Sotrudniki Sotrudniki { get; set; }
+        public int Id_Gender { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sotrudniki> Sotrudniki { get; set; }
     }
 }

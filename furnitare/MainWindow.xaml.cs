@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace furnitare
     public partial class MainWindow : Window
     {
         public static Furniture_ShopEntities db = new Furniture_ShopEntities();
+        public static User authUser;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,54 +38,25 @@ namespace furnitare
         
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            ////try
-            ////{
-            ////    if (t1.Text != "" && t2.Text != "")
-            ////    {
-            ////        string query = "select id,username,password,firstname,lastname,address from user WHERE username ='" + t1.Text + "' AND password ='" + t1.Text + "'";
-            ////        Shop row;
-            ////        row = con.ExecuteReader(query);
-            ////        if (row.HasRows)
-            ////        {
-            ////            while (row.Read())
-            ////            {
-            ////                id = row["id"].ToString();
-            ////                username = row["username"].ToString();
-            ////                password = row["password"].ToString();
-            ////                firstname = row["firstname"].ToString();
-            ////                lastname = row["lastname"].ToString();
-            ////                address = row["address"].ToString();
-            ////            }
-            ////            MessageBox.Show("Data found your name is " + firstname + " " + lastname + " " + " and your address at " + address);
-            ////        }
-            ////        else
-            ////        {
-            ////            MessageBox.Show("Data not found", "Information");
-            ////        }
-            ////    }
-            ////    else
-            ////    {
-            ////        MessageBox.Show("Username or Password is empty", "Information");
-            ////    }
-            ////}
-            ////catch
-            ////{
-            ////    MessageBox.Show("Connection Error", "Information");
-            ////}
-            //if (t1.Text.Length > 0) // проверяем введён ли логин
-            //{
-            //    if (t2.Text.Length > 0) // проверяем введён ли пароль
-            //    {
-            //        Sotrudnik dt_user = Sotrudnik.Select("SELECT * FROM [dbo].[Sotrudnik] WHERE [Id_Sotrudnik] = '" + t1.Text + "' AND [Фамилия] = '" + t2.Text + "'");
-            //        if (dt_user.Shop.Count > 0) // если такая запись существует       
-            //        {
-            //            MessageBox.Show("Пользователь авторизовался"); // говорим, что авторизовался         
-            //        }
-            //        else MessageBox.Show("Пользователя не найден"); // выводим ошибку  
-            //    }
-            //    else MessageBox.Show("Введите пароль"); // выводим ошибку    
-            //}
-            //else MessageBox.Show("Введите логин"); // выводим ошибку 
+            foreach (var user in db.User)
+            {
+                if (user.Login == LoginTb.Text.Trim())
+                {
+                    if (user.Password == PasswordTB.Password.Trim() && user.Id_Doljnost == 2)
+                    {
+                        MessageBox.Show($"Привет Пользователь {user.Login}");
+                        authUser = user;
+                        Page2 p2 = new Page2();
+                        this.Close();
+                        p2.Show();
+                    }
+                    if (user.Password == PasswordTB.Password.Trim() && user.Id_Doljnost == 1)
+                    {
+                        MessageBox.Show($"Привет админ {user.Login}");
+
+                    }
+                }
+            }
         }
     }
 }

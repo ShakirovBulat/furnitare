@@ -11,23 +11,19 @@ namespace furnitare
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
-
-    public partial class Sotrudnik
+    
+    public partial class Doljnost
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sotrudnik ()
+        public Doljnost()
         {
-            this.Shop = new HashSet<Shop>();
+            this.User = new HashSet<User>();
         }
     
-        public int Id_Sotrudnik { get; set; }
-        public string Фамилия { get; set; }
-        public string Имя { get; set; }
-        public string Отчество { get; set; }
-        public Nullable<System.DateTime> ДатаРождения { get; set; }
+        public int Id_Doljnost { get; set; }
+        public string Namimen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shop> Shop { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

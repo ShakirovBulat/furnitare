@@ -12,15 +12,15 @@ namespace furnitare
     using System;
     using System.Collections.Generic;
     
-    public partial class Shop
+    public partial class User
     {
-        public int Id_Shop { get; set; }
-        public int Id_Sklad { get; set; }
-        public int Id_Sotrudnik { get; set; }
-        public string adress { get; set; }
-        public Nullable<decimal> TelNomer { get; set; }
+        public int ID { get; set; }
+        public int Id_Sotrudniki { get; set; }
+        public int Id_Doljnost { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
-        public virtual Sklad Sklad { get; set; }
+        public virtual Doljnost Doljnost { get; set; }
         public virtual Sotrudniki Sotrudniki { get; set; }
     }
 }

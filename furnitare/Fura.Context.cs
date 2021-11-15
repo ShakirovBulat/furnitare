@@ -27,15 +27,18 @@ namespace furnitare
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Doljnost> Doljnost { get; set; }
         public virtual DbSet<Furniture> Furniture { get; set; }
+        public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Material> Material { get; set; }
         public virtual DbSet<Postavshik> Postavshik { get; set; }
         public virtual DbSet<Proizvoditel> Proizvoditel { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Sklad> Sklad { get; set; }
-        public virtual DbSet<Sotrudnik> Sotrudnik { get; set; }
+        public virtual DbSet<Sotrudniki> Sotrudniki { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeFurniture> TypeFurniture { get; set; }
+        public virtual DbSet<User> User { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
