@@ -10,16 +10,9 @@
         <Label Content="Авторизация" HorizontalAlignment="Left" Margin="554,54,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="131,184,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="131,294,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <Label Content="Captcha" HorizontalAlignment="Left" Margin="131,402,0,0" VerticalAlignment="Top" FontSize="48"/>
         <TextBox x:Name="t1" HorizontalAlignment="Left" Height="36" Margin="131,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
-        <TextBox x:Name="t3" HorizontalAlignment="Left" Height="36" Margin="131,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
-        <Button x:Name="login" Content="Войти" HorizontalAlignment="Left" Margin="444,582,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="login_Click"/>
-        <Button x:Name="register" Content="Регистрация" HorizontalAlignment="Left" Margin="1225,746,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="register_Click"/>
-        <Button x:Name="reset" HorizontalAlignment="Left" Margin="1078,530,0,0" VerticalAlignment="Top" Width="43" Height="42" Click="reset_Click" RenderTransformOrigin="-3.115,0.415">
-            <Image x:Name="reset1" Source="resource/i.jpg" />
-        </Button>
-        <TextBox x:Name="t4" HorizontalAlignment="Left" Height="77" Margin="768,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
-        <Label Content="введите каптчу с картинки" HorizontalAlignment="Left" Margin="820,530,0,0" VerticalAlignment="Top" Width="258" FontSize="16"/>
+        <Button x:Name="login" Content="Войти" HorizontalAlignment="Left" Margin="131,445,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="login_Click"/>
+        <Button x:Name="register" Content="Регистрация" HorizontalAlignment="Left" Margin="777,294,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="register_Click"/>
         <TextBox x:Name="t2" HorizontalAlignment="Left" Height="36" Margin="131,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
 
     </Grid>
