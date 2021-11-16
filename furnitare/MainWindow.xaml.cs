@@ -30,9 +30,9 @@ namespace furnitare
         }
         private void register_Click(object sender, RoutedEventArgs e)
         {
-            Page1 p1 = new Page1();
+            Register rg = new Register();
             this.Close();
-            p1.Show();
+            rg.Show();
         }
 
         
@@ -46,9 +46,9 @@ namespace furnitare
                     {
                         MessageBox.Show($"Привет Пользователь {user.Login}");
                         authUser = user;
-                        Page2 p2 = new Page2();
+                        Furnitur fr = new Furnitur();
                         this.Close();
-                        p2.Show();
+                        fr.Show();
                     }
                     if (user.Password == PasswordTB.Password.Trim() && user.Id_Doljnost == 1)
                     {

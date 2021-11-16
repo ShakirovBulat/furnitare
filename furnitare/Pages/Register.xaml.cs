@@ -19,9 +19,9 @@ namespace furnitare
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page1 : Window
+    public partial class Register : Window
     {
-        public Page1()
+        public Register()
         {
             InitializeComponent();
             GenderCB.ItemsSource = MainWindow.db.Gender.ToList();

@@ -18,10 +18,10 @@ namespace furnitare
     /// <summary>
     /// Логика взаимодействия для Page2.xaml
     /// </summary>
-    public partial class Page2 : Window
+    public partial class Furnitur : Window
     {
         public static FurnitureShopEntities db = new FurnitureShopEntities();
-        public Page2()
+        public Furnitur()
         {
             InitializeComponent();
             db = new FurnitureShopEntities();
@@ -81,9 +81,9 @@ namespace furnitare
 
         private void wmBtn_Click(object sender, RoutedEventArgs e)
         {
-            Page3 p3 = new Page3();
+            Sklud sk = new Sklud();
             this.Close();
-            p3.Show();
+            sk.Show();
         }
     }
 }

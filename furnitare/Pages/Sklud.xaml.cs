@@ -18,10 +18,10 @@ namespace furnitare
     /// <summary>
     /// Логика взаимодействия для Page3.xaml
     /// </summary>
-    public partial class Page3 : Window
+    public partial class Sklud : Window
     {
         public static FurnitureShopEntities db = new FurnitureShopEntities();
-        public Page3()
+        public Sklud()
         {
             InitializeComponent();
             db = new FurnitureShopEntities();
@@ -54,16 +54,16 @@ namespace furnitare
 
         private void dwq_Click(object sender, RoutedEventArgs e)
         {
-            Page4 p4 = new Page4();
+            shop sh = new shop();
             this.Close();
-            p4.Show();
+            sh.Show();
         }
 
         private void dwq_Copy_Click(object sender, RoutedEventArgs e)
         {
-            Page2 p2 = new Page2();
+            Furnitur fr = new Furnitur();
             this.Close();
-            p2.Show();
+            fr.Show();
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿<Window x:Class="furnitare.Page3"
+﻿<Window x:Class="furnitare.shop"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:furnitare"
       mc:Ignorable="d" 
-      Title="Page3" Height="1024" Width="1440">
+      Title="Page4" Height="1024" Width="1440">
     <Grid>
         <Grid Background="White">
             <Grid.RowDefinitions>
@@ -14,19 +14,20 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button x:Name="red" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="red_Click">Удалить</Button>
-                <Button x:Name="dwq" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="к магазину" Click="dwq_Click"/>
                 <Button x:Name="dwq_Copy" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Назад" Click="dwq_Copy_Click"/>
 
             </StackPanel>
 
             <StackPanel>
-                <DataGrid AutoGenerateColumns="False" x:Name="Grof1">
+                <DataGrid AutoGenerateColumns="False" x:Name="Grof2">
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Binding="{Binding Id_Sklad}" Width="100" Header="Id_Sklad"/>
-                        <DataGridTextColumn Binding="{Binding Id_Furniture}"  Width="200" Header="Id_Furniture"/>
-                        <DataGridTextColumn Binding="{Binding НомерСклада}"  Width="100" Header="НомерСклада"/>
-                        
+                        <DataGridTextColumn Binding="{Binding Id_Shop}" Width="100" Header="Id_Shop"/>
+                        <DataGridTextColumn Binding="{Binding Id_Sklad}"  Width="200" Header="Id_Sklad"/>
+                        <DataGridTextColumn Binding="{Binding Id_Sotrudnik}"  Width="100" Header="Id_Sotrudnik"/>
+                        <DataGridTextColumn Binding="{Binding adress}"  Width="100" Header="adress"/>
+                        <DataGridTextColumn Binding="{Binding TelNomer}"  Width="100" Header="TelNomer"/>
+
                     </DataGrid.Columns>
 
                 </DataGrid>
