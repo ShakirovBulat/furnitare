@@ -118,15 +118,6 @@
     <Compile Include="Sotrudniki.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>fura.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>fura.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>fura.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeFurniture.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>

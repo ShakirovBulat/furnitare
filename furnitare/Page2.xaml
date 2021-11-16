@@ -13,7 +13,7 @@
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd">Добавить</Button>
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd" Content="Сохранить"/>
                 <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="ButtonDel">Удалить</Button>
                 <Button x:Name="wmBtn" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="К складу" Click="wmBtn_Click"/>
 
@@ -29,7 +29,7 @@
                         <DataGridTextColumn Binding="{Binding Id_Material}"  Width="100" Header="Id_Material"/>
                         <DataGridTextColumn Binding="{Binding Id_Proizvoditel}"  Width="100" Header="Id_Proizvoditel"/>
                         <DataGridTextColumn Binding="{Binding Цена}"  Width="100" Header="Цена"/>
-                        <DataGridTextColumn Binding="{Binding Название}"  Width="100" Header="Цена"/>
+                        <DataGridTextColumn Binding="{Binding Название}"  Width="100" Header="Название"/>
                         <DataGridTextColumn Binding="{Binding Количество}"  Width="100" Header="Количество"/>
 
                     </DataGrid.Columns>

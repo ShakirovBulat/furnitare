@@ -20,11 +20,11 @@ namespace furnitare
     /// </summary>
     public partial class Page3 : Window
     {
-        public static Furniture_ShopEntities db = new Furniture_ShopEntities();
+        public static FurnitureShopEntities db = new FurnitureShopEntities();
         public Page3()
         {
             InitializeComponent();
-            db = new Furniture_ShopEntities();
+            db = new FurnitureShopEntities();
 
             Grof1.ItemsSource = db.Sklad.ToList();
         }
@@ -39,33 +39,18 @@ namespace furnitare
             MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
             if (result == MessageBoxResult.Yes)
             {
-                db.Sklad.Remove(q);
-                db.SaveChanges();
-                Grof1.ItemsSource = db.Sklad.ToList();
+                try
+                {
+                    db.Sklad.Remove(q);
+                    db.SaveChanges();
+                    Grof1.ItemsSource = db.Sklad.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Удалите соединения связанные с этим данным");
+                }
             }
-            //foreach (Sklad row in Grof1.ItemsSource)
-            //{
-            //    //get key
-            //    int rowId = Convert.ToInt32(row.Id_Sklad);
-
-            //    //avoid updating the last empty row in datagrid
-            //    if (rowId > 0)
-            //    {
-            //        //delete 
-            //        Delete(rowId);
-
-            //        //refresh datagrid
-            //        Grof1.ItemsSource = db.Sklad.ToList();
-            //    }
-            //}
         }
-        //public void Delete(int rowId)
-        //{
-        //    var tdd = db.Sklad.First(c => c.Id_Sklad == rowId);
-        //    db.Sklad.Remove(tdd);
-        //    db.SaveChanges();
-
-        //}
 
         private void dwq_Click(object sender, RoutedEventArgs e)
         {

@@ -21,11 +21,11 @@ namespace furnitare
     /// </summary>
     public partial class Page4 : Window
     {
-        public static Furniture_ShopEntities db = new Furniture_ShopEntities();
+        public static FurnitureShopEntities db = new FurnitureShopEntities();
         public Page4()
         {
             InitializeComponent();
-            db = new Furniture_ShopEntities();
+            db = new FurnitureShopEntities();
 
             Grof2.ItemsSource = db.Shop.ToList();
         }
@@ -40,56 +40,19 @@ namespace furnitare
             MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
             if (result == MessageBoxResult.Yes)
             {
-                db.Shop.Remove(q);
-                db.SaveChanges();
-                Grof2.ItemsSource = db.Shop.ToList();
+                try
+                {
+                    db.Shop.Remove(q);
+                    db.SaveChanges();
+                    Grof2.ItemsSource = db.Shop.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Удалите соединения связанные с этим данным");
+                }
             }
-            //try
-            //{
-            //    if (Grof2.SelectedItems.Count > 0)
-            //    {
-            //        for (int i = Grof2.SelectedItems.Count - 1; i >= 0; i--)
-            //        {
-            //            DataRowView rowView = Grof2.SelectedItems[i] as DataRowView;
-
-            //            foreach (DataRow row in Grof2.Row)
-            //            {
-            //                if (row["Name"].ToString() == rowView.Row["Name"].ToString())
-            //                    row.Delete(); // Помечаем строку на удаление
-            //            }
-            //        }
-            //        dataTable.AcceptChanges(); // Фиксируем изменения внесенные в DataTable
-            //        dataAdapter.Update(dataTable);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Ошибка в функции Button_DeleteSelectedMark_Click!\n\n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
-        } // Конец функции Button_DeleteSelectedMark_Click
-        //    foreach (Shop row in Grof2.ItemsSource)
-        //    {
-        //        //get key
-        //        int rowId = Convert.ToInt32(row.Id_Shop);
-
-        //        //avoid updating the last empty row in datagrid
-        //        if (rowId > 0)
-        //        {
-        //            //delete 
-        //            Delete(rowId);
-
-        //            //refresh datagrid
-        //            Grof2.ItemsSource = db.Shop.ToList();
-        //        }
-        //    }
-        //}
-        //public void Delete(int rowId)
-        //{
-        //    var td = db.Shop.First(c => c.Id_Shop == rowId);
-        //    db.Shop.Remove(td);
-        //    db.SaveChanges();
-
-        //}
+            
+        } 
 
         private void dwq_Copy_Click(object sender, RoutedEventArgs e)
         {

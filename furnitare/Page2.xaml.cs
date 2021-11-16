@@ -20,21 +20,19 @@ namespace furnitare
     /// </summary>
     public partial class Page2 : Window
     {
-        public static Furniture_ShopEntities db = new Furniture_ShopEntities();
+        public static FurnitureShopEntities db = new FurnitureShopEntities();
         public Page2()
         {
             InitializeComponent();
-            db = new Furniture_ShopEntities();
+            db = new FurnitureShopEntities();
 
             Grof.ItemsSource = db.Furniture.ToList();
         }
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
-            //var newZakaz = new Furniture();
-            //db.Furniture.Add(newZakaz);
-            //var x = new (db, newZakaz);
-            //x.ShowDialog();
-            //Grof.ItemsSource = db.Furniture.ToList();
+            Furniture fur = new Furniture();
+            MainWindow.db.Furniture.Add(fur);
+            db.SaveChanges();
         }
 
         private void ButtonDel(object sender, RoutedEventArgs e)
@@ -48,33 +46,20 @@ namespace furnitare
             MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
             if (result == MessageBoxResult.Yes)
             {
-                db.Furniture.Remove(q);
-                db.SaveChanges();
-                Grof.ItemsSource = db.Furniture.ToList();
+                try
+                {
+                    db.Furniture.Remove(q);
+                    db.SaveChanges();
+                    Grof.ItemsSource = db.Furniture.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Удалите соединения связанные с этим данным");
+                }
+                
             }
-            //foreach (Furniture row in Grof.ItemsSource)
-            //{
-            //    //get key
-            //    int rowId = Convert.ToInt32(row.Id_Furniture);
-
-            //    //avoid updating the last empty row in datagrid
-            //    if (rowId > 0)
-            //    {
-            //        //delete 
-            //        Delete(rowId);
-
-            //        //refresh datagrid
-            //        Grof.ItemsSource = db.Furniture.ToList();
-            //    }
-            //}
+            
         }
-        //public void Delete(int rowId)
-        //{
-        //    var toBeDeleted = db.Furniture.First(c => c.Id_Furniture == rowId);
-        //    db.Furniture.Remove(toBeDeleted);
-        //    db.SaveChanges();
-
-        //}
 
         private void wmBtn_Click(object sender, RoutedEventArgs e)
         {

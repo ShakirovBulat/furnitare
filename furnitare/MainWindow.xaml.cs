@@ -22,7 +22,7 @@ namespace furnitare
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Furniture_ShopEntities db = new Furniture_ShopEntities();
+        public static FurnitureShopEntities db = new FurnitureShopEntities();
         public static User authUser;
         public MainWindow()
         {
