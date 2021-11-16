@@ -30,9 +30,27 @@ namespace furnitare
         }
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
-            Furniture fur = new Furniture();
-            MainWindow.db.Furniture.Add(fur);
-            db.SaveChanges();
+            var q = Grof.SelectedItem as Furniture;
+            if (q == null)
+            {
+                MessageBox.Show("Эта строка пуста.");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите сохранить?", "Сохранить?", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    db.Furniture.Add(q);
+                    db.SaveChanges();
+                    Grof.ItemsSource = db.Furniture.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Удалите соединения связанные с этим данным");
+                }
+
+            }
         }
 
         private void ButtonDel(object sender, RoutedEventArgs e)
