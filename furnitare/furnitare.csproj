@@ -97,6 +97,12 @@
     <Compile Include="Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page3.xaml.cs">
+      <DependentUpon>Page3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page4.xaml.cs">
+      <DependentUpon>Page4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Postavshik.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
@@ -144,6 +150,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,33 +16,24 @@ using System.Windows.Shapes;
 namespace furnitare
 {
     /// <summary>
-    /// Логика взаимодействия для Page2.xaml
+    /// Логика взаимодействия для Page3.xaml
     /// </summary>
-    public partial class Page2 : Window
+    public partial class Page3 : Window
     {
         public static Furniture_ShopEntities db = new Furniture_ShopEntities();
-        public Page2()
+        public Page3()
         {
             InitializeComponent();
             db = new Furniture_ShopEntities();
 
-            Grof.ItemsSource = db.Furniture.ToList();
+            Grof1.ItemsSource = db.Sklad.ToList();
         }
-        private void ButtonAdd(object sender, RoutedEventArgs e)
+        private void red_Click(object sender, RoutedEventArgs e)
         {
-            //var newZakaz = new Furniture();
-            //db.Furniture.Add(newZakaz);
-            //var x = new (db, newZakaz);
-            //x.ShowDialog();
-            //Grof.ItemsSource = db.Furniture.ToList();
-        }
-
-        private void ButtonDel(object sender, RoutedEventArgs e)
-        {
-            foreach (Furniture row in Grof.ItemsSource)
+            foreach (Sklad row in Grof1.ItemsSource)
             {
                 //get key
-                int rowId = Convert.ToInt32(row.Id_Furniture);
+                int rowId = Convert.ToInt32(row.Id_Sklad);
 
                 //avoid updating the last empty row in datagrid
                 if (rowId > 0)
@@ -51,23 +42,30 @@ namespace furnitare
                     Delete(rowId);
 
                     //refresh datagrid
-                    Grof.ItemsSource = db.Furniture.ToList();
+                    Grof1.ItemsSource = db.Sklad.ToList();
                 }
             }
         }
         public void Delete(int rowId)
         {
-            var toBeDeleted = db.Furniture.First(c => c.Id_Furniture == rowId);
-            db.Furniture.Remove(toBeDeleted);
+            var tdd = db.Sklad.First(c => c.Id_Sklad == rowId);
+            db.Sklad.Remove(tdd);
             db.SaveChanges();
 
         }
 
-        private void wmBtn_Click(object sender, RoutedEventArgs e)
+        private void dwq_Click(object sender, RoutedEventArgs e)
         {
-            Page3 p3 = new Page3();
+            Page4 p4 = new Page4();
             this.Close();
-            p3.Show();
+            p4.Show();
+        }
+
+        private void dwq_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Page2 p2 = new Page2();
+            this.Close();
+            p2.Show();
         }
     }
 }
