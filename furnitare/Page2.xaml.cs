@@ -28,5 +28,41 @@ namespace furnitare
 
             Grof.ItemsSource = db.Furniture.ToList();
         }
+        private void ButtonAdd(object sender, RoutedEventArgs e)
+        {
+            //var newZakaz = new Furniture();
+            //db.Furniture.Add(newZakaz);
+            //var x = new (db, newZakaz);
+            //x.ShowDialog();
+            //Grof.ItemsSource = db.Furniture.ToList();
+        }
+
+        private void ButtonDel(object sender, RoutedEventArgs e)
+        {
+            foreach (Furniture row in Grof.ItemsSource)
+            {
+                //get key
+                int rowId = Convert.ToInt32(row.Id_Furniture);
+
+                //avoid updating the last empty row in datagrid
+                if (rowId > 0)
+                {
+                    //delete 
+                    Delete(rowId);
+
+                    //refresh datagrid
+                    Grof.ItemsSource = db.Furniture.ToList();
+                }
+            }
+        }
+        public void Delete(int rowId)
+        {
+            var td = db.Shop.First(c => c.Id_Shop == rowId);
+            var tdd = db.Sklad.First(c => c.Id_Sklad == rowId);
+            var toBeDeleted = db.Furniture.First(c => c.Id_Furniture == rowId);
+            db.Furniture.Remove(toBeDeleted);
+            db.SaveChanges();
+
+        }
     }
 }

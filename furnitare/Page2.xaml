@@ -6,19 +6,37 @@
       xmlns:local="clr-namespace:furnitare"
       mc:Ignorable="d" 
       Title="Page2" Height="1024" Width="1440">
+    <Grid>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd">Добавить</Button>
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="ButtonDel">Удалить</Button>
 
+            </StackPanel>
 
-    <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof">
-        <DataGrid.Columns>
-            
-            <DataGridTextColumn Binding="{Binding Id_Furniture}" Width="100" Header="Id_Furniture"/>
-            <DataGridTextColumn Binding="{Binding Id_Postavshik}"  Width="200" Header="Id_Postavshik"/>
-            <DataGridTextColumn Binding="{Binding id_TypeFurniture}"  Width="100" Header="Id_TypeFurniture"/>
-            <DataGridTextColumn Binding="{Binding Id_Material}"  Width="100" Header="Id_Material"/>
-            <DataGridTextColumn Binding="{Binding Id_Proizvoditel}"  Width="100" Header="Id_Proizvoditel"/>
-            <DataGridTextColumn Binding="{Binding Цена}"  Width="100" Header="Цена"/>
-            <DataGridTextColumn Binding="{Binding Название}"  Width="100" Header="Цена"/>
-            <DataGridTextColumn Binding="{Binding Количество}"  Width="100" Header="Количество"/>
-        </DataGrid.Columns>
-    </DataGrid>
+            <StackPanel>
+                <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding Id_Furniture}" Width="100" Header="Id_Furniture"/>
+                        <DataGridTextColumn Binding="{Binding Id_Postavshik}"  Width="200" Header="Id_Postavshik"/>
+                        <DataGridTextColumn Binding="{Binding id_TypeFurniture}"  Width="100" Header="Id_TypeFurniture"/>
+                        <DataGridTextColumn Binding="{Binding Id_Material}"  Width="100" Header="Id_Material"/>
+                        <DataGridTextColumn Binding="{Binding Id_Proizvoditel}"  Width="100" Header="Id_Proizvoditel"/>
+                        <DataGridTextColumn Binding="{Binding Цена}"  Width="100" Header="Цена"/>
+                        <DataGridTextColumn Binding="{Binding Название}"  Width="100" Header="Цена"/>
+                        <DataGridTextColumn Binding="{Binding Количество}"  Width="100" Header="Количество"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+    
 </Window>
