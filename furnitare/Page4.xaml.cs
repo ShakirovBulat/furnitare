@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,29 +31,52 @@ namespace furnitare
         }
         private void red_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Shop row in Grof2.ItemsSource)
+            try
             {
-                //get key
-                int rowId = Convert.ToInt32(row.Id_Shop);
-
-                //avoid updating the last empty row in datagrid
-                if (rowId > 0)
+                if (Grof2.SelectedItems.Count > 0)
                 {
-                    //delete 
-                    Delete(rowId);
+                    for (int i = Grof2.SelectedItems.Count - 1; i >= 0; i--)
+                    {
+                        DataRowView rowView = Grof2.SelectedItems[i] as DataRowView;
 
-                    //refresh datagrid
-                    Grof2.ItemsSource = db.Shop.ToList();
+                        foreach (DataRow row in Grof2.Row)
+                        {
+                            if (row["Name"].ToString() == rowView.Row["Name"].ToString())
+                                row.Delete(); // Помечаем строку на удаление
+                        }
+                    }
+                    dataTable.AcceptChanges(); // Фиксируем изменения внесенные в DataTable
+                    dataAdapter.Update(dataTable);
                 }
             }
-        }
-        public void Delete(int rowId)
-        {
-            var td = db.Shop.First(c => c.Id_Shop == rowId);
-            db.Shop.Remove(td);
-            db.SaveChanges();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка в функции Button_DeleteSelectedMark_Click!\n\n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        } // Конец функции Button_DeleteSelectedMark_Click
+        //    foreach (Shop row in Grof2.ItemsSource)
+        //    {
+        //        //get key
+        //        int rowId = Convert.ToInt32(row.Id_Shop);
 
-        }
+        //        //avoid updating the last empty row in datagrid
+        //        if (rowId > 0)
+        //        {
+        //            //delete 
+        //            Delete(rowId);
+
+        //            //refresh datagrid
+        //            Grof2.ItemsSource = db.Shop.ToList();
+        //        }
+        //    }
+        //}
+        //public void Delete(int rowId)
+        //{
+        //    var td = db.Shop.First(c => c.Id_Shop == rowId);
+        //    db.Shop.Remove(td);
+        //    db.SaveChanges();
+
+        //}
 
         private void dwq_Copy_Click(object sender, RoutedEventArgs e)
         {
