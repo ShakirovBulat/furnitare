@@ -39,29 +39,42 @@ namespace furnitare
 
         private void ButtonDel(object sender, RoutedEventArgs e)
         {
-            foreach (Furniture row in Grof.ItemsSource)
+            var q = Grof.SelectedItem as Furniture;
+            if (q == null)
             {
-                //get key
-                int rowId = Convert.ToInt32(row.Id_Furniture);
-
-                //avoid updating the last empty row in datagrid
-                if (rowId > 0)
-                {
-                    //delete 
-                    Delete(rowId);
-
-                    //refresh datagrid
-                    Grof.ItemsSource = db.Furniture.ToList();
-                }
+                MessageBox.Show("Эта строка и так пустая.");
+                return;
             }
-        }
-        public void Delete(int rowId)
-        {
-            var toBeDeleted = db.Furniture.First(c => c.Id_Furniture == rowId);
-            db.Furniture.Remove(toBeDeleted);
-            db.SaveChanges();
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                db.Furniture.Remove(q);
+                db.SaveChanges();
+                Grof.ItemsSource = db.Furniture.ToList();
+            }
+            //foreach (Furniture row in Grof.ItemsSource)
+            //{
+            //    //get key
+            //    int rowId = Convert.ToInt32(row.Id_Furniture);
 
+            //    //avoid updating the last empty row in datagrid
+            //    if (rowId > 0)
+            //    {
+            //        //delete 
+            //        Delete(rowId);
+
+            //        //refresh datagrid
+            //        Grof.ItemsSource = db.Furniture.ToList();
+            //    }
+            //}
         }
+        //public void Delete(int rowId)
+        //{
+        //    var toBeDeleted = db.Furniture.First(c => c.Id_Furniture == rowId);
+        //    db.Furniture.Remove(toBeDeleted);
+        //    db.SaveChanges();
+
+        //}
 
         private void wmBtn_Click(object sender, RoutedEventArgs e)
         {

@@ -30,29 +30,42 @@ namespace furnitare
         }
         private void red_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Sklad row in Grof1.ItemsSource)
+            var q = Grof1.SelectedItem as Sklad;
+            if (q == null)
             {
-                //get key
-                int rowId = Convert.ToInt32(row.Id_Sklad);
-
-                //avoid updating the last empty row in datagrid
-                if (rowId > 0)
-                {
-                    //delete 
-                    Delete(rowId);
-
-                    //refresh datagrid
-                    Grof1.ItemsSource = db.Sklad.ToList();
-                }
+                MessageBox.Show("Эта строка и так пустая.");
+                return;
             }
-        }
-        public void Delete(int rowId)
-        {
-            var tdd = db.Sklad.First(c => c.Id_Sklad == rowId);
-            db.Sklad.Remove(tdd);
-            db.SaveChanges();
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                db.Sklad.Remove(q);
+                db.SaveChanges();
+                Grof1.ItemsSource = db.Sklad.ToList();
+            }
+            //foreach (Sklad row in Grof1.ItemsSource)
+            //{
+            //    //get key
+            //    int rowId = Convert.ToInt32(row.Id_Sklad);
 
+            //    //avoid updating the last empty row in datagrid
+            //    if (rowId > 0)
+            //    {
+            //        //delete 
+            //        Delete(rowId);
+
+            //        //refresh datagrid
+            //        Grof1.ItemsSource = db.Sklad.ToList();
+            //    }
+            //}
         }
+        //public void Delete(int rowId)
+        //{
+        //    var tdd = db.Sklad.First(c => c.Id_Sklad == rowId);
+        //    db.Sklad.Remove(tdd);
+        //    db.SaveChanges();
+
+        //}
 
         private void dwq_Click(object sender, RoutedEventArgs e)
         {

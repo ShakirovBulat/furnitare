@@ -31,28 +31,41 @@ namespace furnitare
         }
         private void red_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var q = Grof2.SelectedItem as Shop;
+            if (q == null)
             {
-                if (Grof2.SelectedItems.Count > 0)
-                {
-                    for (int i = Grof2.SelectedItems.Count - 1; i >= 0; i--)
-                    {
-                        DataRowView rowView = Grof2.SelectedItems[i] as DataRowView;
+                MessageBox.Show("Эта строка и так пустая.");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить строку?", "Удалить?", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                db.Shop.Remove(q);
+                db.SaveChanges();
+                Grof2.ItemsSource = db.Shop.ToList();
+            }
+            //try
+            //{
+            //    if (Grof2.SelectedItems.Count > 0)
+            //    {
+            //        for (int i = Grof2.SelectedItems.Count - 1; i >= 0; i--)
+            //        {
+            //            DataRowView rowView = Grof2.SelectedItems[i] as DataRowView;
 
-                        foreach (DataRow row in Grof2.Row)
-                        {
-                            if (row["Name"].ToString() == rowView.Row["Name"].ToString())
-                                row.Delete(); // Помечаем строку на удаление
-                        }
-                    }
-                    dataTable.AcceptChanges(); // Фиксируем изменения внесенные в DataTable
-                    dataAdapter.Update(dataTable);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка в функции Button_DeleteSelectedMark_Click!\n\n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //            foreach (DataRow row in Grof2.Row)
+            //            {
+            //                if (row["Name"].ToString() == rowView.Row["Name"].ToString())
+            //                    row.Delete(); // Помечаем строку на удаление
+            //            }
+            //        }
+            //        dataTable.AcceptChanges(); // Фиксируем изменения внесенные в DataTable
+            //        dataAdapter.Update(dataTable);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Ошибка в функции Button_DeleteSelectedMark_Click!\n\n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         } // Конец функции Button_DeleteSelectedMark_Click
         //    foreach (Shop row in Grof2.ItemsSource)
         //    {
