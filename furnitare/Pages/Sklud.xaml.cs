@@ -65,5 +65,30 @@ namespace furnitare
             this.Close();
             fr.Show();
         }
+
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            var q = Grof1.SelectedItem as Furniture;
+            if (q == null)
+            {
+                MessageBox.Show("Эта строка пуста.");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Вы действительно хотите сохранить?", "Сохранить?", MessageBoxButton.YesNoCancel);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    db.Furniture.Add(q);
+                    db.SaveChanges();
+                    Grof1.ItemsSource = db.Furniture.ToList();
+                }
+                catch
+                {
+                    MessageBox.Show("Удалите соединения связанные с этим данным");
+                }
+
+            }
+        }
     }
 }

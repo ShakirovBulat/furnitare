@@ -46,14 +46,16 @@ namespace furnitare
                     {
                         MessageBox.Show($"Привет Пользователь {user.Login}");
                         authUser = user;
-                        Furnitur fr = new Furnitur();
+                        FurnitUser fr = new FurnitUser();
                         this.Close();
                         fr.Show();
                     }
                     if (user.Password == PasswordTB.Password.Trim() && user.Id_Doljnost == 1)
                     {
                         MessageBox.Show($"Привет админ {user.Login}");
-
+                        Furnitur fr = new Furnitur();
+                        this.Close();
+                        fr.Show();
                     }
                 }
             }

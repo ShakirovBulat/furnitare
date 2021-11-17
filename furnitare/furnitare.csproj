@@ -85,6 +85,9 @@
     <Compile Include="Furniture.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FurnitUser.xaml.cs">
+      <DependentUpon>FurnitUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gender.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
     <Compile Include="User.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\FurnitUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,9 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resource\i.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
