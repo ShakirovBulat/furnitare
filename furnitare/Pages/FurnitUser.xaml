@@ -24,7 +24,7 @@
                 <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof" Background="Transparent" RowBackground="Transparent">
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
-                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Foreground" Value="White"/>
                         </Style>
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
