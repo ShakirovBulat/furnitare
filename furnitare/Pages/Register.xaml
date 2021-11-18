@@ -8,9 +8,24 @@
         Title="Page1" Height="1024" Width="1440">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/furnitare;component/12.png"></ImageBrush>
+        </Grid.Background>
         <Label Content="" HorizontalAlignment="Left" Margin="545,142,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <Button x:Name="register" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="678,258,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="register_Click"/>
-        <Button x:Name="authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="1078,442,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="authorization_Click"/>
+        <Button x:Name="register" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="678,258,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="register_Click" Background="#FF82D4D8">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="50"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="1078,442,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="authorization_Click" Background="#FF69CED3">
+            <Button.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="50"/>
+            </Style>
+            </Button.Resources>
+        </Button>
         <Label Content="Регистрация" HorizontalAlignment="Left" Margin="554,54,0,0" VerticalAlignment="Top" FontSize="48"/>
         <TextBox x:Name="lastTB" HorizontalAlignment="Left" Height="36" Margin="131,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
         <TextBox x:Name="firsTB" HorizontalAlignment="Left" Height="36" Margin="131,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
@@ -18,8 +33,8 @@
         <Label Content="Фамилия" HorizontalAlignment="Left" Margin="131,224,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="131,361,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="131,497,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <DatePicker x:Name="dtdatetime" HorizontalAlignment="Left" Margin="758,506,0,0" VerticalAlignment="Top" Height="106" Width="272"/>
-        <ComboBox x:Name="GenderCB" HorizontalAlignment="Left" Margin="1066,506,0,0" VerticalAlignment="Top" Width="120" Height="36"/>
+        <DatePicker x:Name="dtdatetime" HorizontalAlignment="Left" Margin="678,459,0,0" VerticalAlignment="Top" Height="24" Width="200"/>
+        <ComboBox x:Name="GenderCB" HorizontalAlignment="Left" Margin="678,512,0,0" VerticalAlignment="Top" Width="120" Height="36" Background="{x:Null}" BorderBrush="#FFAC3030"/>
         <TextBox x:Name="LoginTB" HorizontalAlignment="Left" Height="36" Margin="131,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="131,626,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
         <PasswordBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="131,827,0,0" VerticalAlignment="Top" Height="42" Width="444" Background="#FFBF5959" BorderBrush="Black"/>

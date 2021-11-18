@@ -7,8 +7,11 @@
       mc:Ignorable="d" 
       Title="Furnitur" Height="1024" Width="1440">
     <Grid>
-        <Grid Background="White">
-            <Grid.RowDefinitions>
+        <Grid>
+            <Grid.Background>
+            <ImageBrush ImageSource="111.png"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
@@ -20,8 +23,15 @@
             </StackPanel>
 
             <StackPanel>
-                <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof">
+
+                <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof" Background="Transparent" RowBackground="Transparent" >
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Style>
+                    </DataGrid.RowStyle>
                     <DataGrid.Columns>
+                        
 
                         <DataGridTextColumn Binding="{Binding Id_Furniture}" Width="100" Header="Id_Furniture"/>
                         <DataGridTextColumn Binding="{Binding Id_Postavshik}"  Width="200" Header="Id_Postavshik"/>
@@ -37,7 +47,6 @@
                 </DataGrid>
             </StackPanel>
         </Grid>
-
     </Grid>
 
 </Window>
