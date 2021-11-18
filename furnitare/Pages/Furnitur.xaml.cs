@@ -26,11 +26,21 @@ namespace furnitare
             InitializeComponent();
             db = new FurnitureShopEntities();
 
-            Grof.ItemsSource = db.Furniture.ToList();
+            Grofa.ItemsSource = db.Furniture.ToList();
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Grofa.ItemsSource);
+            view.Filter = NameFilter;
+        }
+        private bool NameFilter(object item)
+        {
+            if (String.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            else
+                return ((item as Furniture).Название.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
-            var q = Grof.SelectedItem as Furniture;
+            var q = Grofa.SelectedItem as Furniture;
             if (q == null)
             {
                 MessageBox.Show("Эта строка пуста.");
@@ -43,7 +53,7 @@ namespace furnitare
                 {
                     db.Furniture.Add(q);
                     db.SaveChanges();
-                    Grof.ItemsSource = db.Furniture.ToList();
+                    Grofa.ItemsSource = db.Furniture.ToList();
                 }
                 catch
                 {
@@ -55,7 +65,7 @@ namespace furnitare
 
         private void ButtonDel(object sender, RoutedEventArgs e)
         {
-            var q = Grof.SelectedItem as Furniture;
+            var q = Grofa.SelectedItem as Furniture;
             if (q == null)
             {
                 MessageBox.Show("Эта строка и так пустая.");
@@ -68,7 +78,7 @@ namespace furnitare
                 {
                     db.Furniture.Remove(q);
                     db.SaveChanges();
-                    Grof.ItemsSource = db.Furniture.ToList();
+                    Grofa.ItemsSource = db.Furniture.ToList();
                 }
                 catch
                 {
@@ -84,6 +94,11 @@ namespace furnitare
             Sklud sk = new Sklud();
             this.Close();
             sk.Show();
+        }
+
+        private void txtFilter_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Grofa.ItemsSource).Refresh();
         }
     }
 }

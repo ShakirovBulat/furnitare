@@ -17,7 +17,6 @@
         <Button x:Name="login" Content="Войти" HorizontalAlignment="Left" Margin="131,445,0,0" VerticalAlignment="Top" Width="508" Height="160" FontSize="48" Click="login_Click"/>
         <Button x:Name="register" Content="Регистрация" HorizontalAlignment="Left" Margin="131,633,0,0" VerticalAlignment="Top" Width="108" Height="34" FontSize="14" Click="register_Click"/>
         <PasswordBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="131,368,0,0" VerticalAlignment="Top" Height="42" Width="347" Background="#FFBF5959" BorderBrush="Black"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="131,703,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -85,14 +85,14 @@
     <Compile Include="Furniture.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FurnitUser.xaml.cs">
-      <DependentUpon>FurnitUser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gender.cs">
       <DependentUpon>fura.tt</DependentUpon>
     </Compile>
     <Compile Include="Material.cs">
       <DependentUpon>fura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FurnitUser.xaml.cs">
+      <DependentUpon>FurnitUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -120,9 +120,6 @@
     </Compile>
     <Compile Include="Sotrudniki.cs">
       <DependentUpon>fura.tt</DependentUpon>
-    </Compile>
-    <Compile Include="test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Compile Include="TypeFurniture.cs">
       <DependentUpon>fura.tt</DependentUpon>
@@ -159,10 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\shop.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +201,8 @@
     <Resource Include="Pages\12.png" />
     <Resource Include="Pages\111.png" />
     <Resource Include="12.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="fura.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>fura.edmx</DependentUpon>
