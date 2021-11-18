@@ -13,9 +13,27 @@
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button x:Name="adu" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Сохранить" Click="adu_Click"/>
-                <Button x:Name="red" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="red_Click" Content="Удалить"/>
-                <Button x:Name="dwq_Copy" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Назад" Click="dwq_Copy_Click"/>
+                <Button x:Name="adu" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Сохранить" Click="adu_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="red" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="red_Click" Content="Удалить">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="dwq_Copy" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Назад" Click="dwq_Copy_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
 
             </StackPanel>
 

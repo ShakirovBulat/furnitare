@@ -16,7 +16,7 @@
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd" Content="Сохранить"/>
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd" Content="Сохранить" Background="#FFA27979"/>
 
             </StackPanel>
 
