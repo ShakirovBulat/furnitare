@@ -60,5 +60,12 @@ namespace furnitare
                 }
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            test fr = new test();
+            this.Close();
+            fr.Show();
+        }
     }
 }
