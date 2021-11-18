@@ -26,9 +26,9 @@ namespace furnitare
             InitializeComponent();
             db = new FurnitureShopEntities();
 
-            Grofa.ItemsSource = db.Furniture.ToList();
+            Grof.ItemsSource = db.Furniture.ToList();
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Grofa.ItemsSource);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Grof.ItemsSource);
             view.Filter = NameFilter;
         }
         private bool NameFilter(object item)
@@ -40,7 +40,7 @@ namespace furnitare
         }
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
-            var q = Grofa.SelectedItem as Furniture;
+            var q = Grof.SelectedItem as Furniture;
             if (q == null)
             {
                 MessageBox.Show("Эта строка пуста.");
@@ -53,7 +53,7 @@ namespace furnitare
                 {
                     db.Furniture.Add(q);
                     db.SaveChanges();
-                    Grofa.ItemsSource = db.Furniture.ToList();
+                    Grof.ItemsSource = db.Furniture.ToList();
                 }
                 catch
                 {
@@ -65,7 +65,7 @@ namespace furnitare
 
         private void ButtonDel(object sender, RoutedEventArgs e)
         {
-            var q = Grofa.SelectedItem as Furniture;
+            var q = Grof.SelectedItem as Furniture;
             if (q == null)
             {
                 MessageBox.Show("Эта строка и так пустая.");
@@ -78,7 +78,7 @@ namespace furnitare
                 {
                     db.Furniture.Remove(q);
                     db.SaveChanges();
-                    Grofa.ItemsSource = db.Furniture.ToList();
+                    Grof.ItemsSource = db.Furniture.ToList();
                 }
                 catch
                 {
@@ -98,7 +98,8 @@ namespace furnitare
 
         private void txtFilter_TextChanged_1(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(Grofa.ItemsSource).Refresh();
+            CollectionViewSource.GetDefaultView(Grof.ItemsSource).Refresh();
         }
+
     }
 }

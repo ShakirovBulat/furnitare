@@ -27,6 +27,16 @@ namespace furnitare
             db = new FurnitureShopEntities();
 
             Grof.ItemsSource = db.Furniture.ToList();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Grof.ItemsSource);
+            view.Filter = NameFilter;
+
+        }
+        private bool NameFilter(object item)
+        {
+            if (String.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            else
+                return ((item as Furniture).Название.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
         private void ButtonAdd(object sender, RoutedEventArgs e)
         {
@@ -51,6 +61,11 @@ namespace furnitare
                 }
 
             }
+        }
+
+        private void txtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Grof.ItemsSource).Refresh();
         }
     }
 }

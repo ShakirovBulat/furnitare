@@ -9,42 +9,41 @@
     <Grid>
         <Grid>
             <Grid.Background>
-            <ImageBrush ImageSource="111.png"></ImageBrush>
-        </Grid.Background>
-        <Grid.RowDefinitions>
+                <ImageBrush ImageSource="111.png"></ImageBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd" Content="Сохранить"/>
-                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="ButtonDel">Удалить</Button>
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Click="ButtonAdd" Content="Сохранить" Margin="0,15"/>
+                <Button FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="ButtonDel" Content="Удалить"/>
                 <Button x:Name="wmBtn" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="К складу" Click="wmBtn_Click"/>
 
             </StackPanel>
-            <ListView x:Name="Grofa" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="898" Opacity="0.5">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id_Furniture}" 
-                      Header="IdFurniture" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id_Postavshik}" 
-                      Header="IdPostavshik" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=id_TypeFurniture}" 
-                      Header="idTypeFurniture" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id_Material}" 
-                      Header="Id_Material" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id_Proizvoditel}" 
-                      Header="Id_Proizvoditel" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Название}" 
-                      Header="Название" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Цена}" 
-                      Header="Цена" Width="100"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Количество}" 
-                      Header="Количество" Width="100"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <Label Content="Название" HorizontalAlignment="Left" Margin="383,899,0,0" VerticalAlignment="Top" Height="24" Width="64" Foreground="White"/>
-            <TextBox x:Name="txtFilter" HorizontalAlignment="Left" Height="23" Margin="357,21,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFilter_TextChanged_1"/>
+            <StackPanel>
+                <DataGrid AutoGenerateColumns="False" ColumnWidth="*" x:Name="Grof" Background="Transparent" RowBackground="Transparent">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="White"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding Id_Furniture}" Width="100" Header="Id_Furniture"/>
+                        <DataGridTextColumn Binding="{Binding Id_Postavshik}"  Width="200" Header="Id_Postavshik"/>
+                        <DataGridTextColumn Binding="{Binding id_TypeFurniture}"  Width="100" Header="Id_TypeFurniture"/>
+                        <DataGridTextColumn Binding="{Binding Id_Material}"  Width="100" Header="Id_Material"/>
+                        <DataGridTextColumn Binding="{Binding Id_Proizvoditel}"  Width="100" Header="Id_Proizvoditel"/>
+                        <DataGridTextColumn Binding="{Binding Цена}"  Width="100" Header="Цена"/>
+                        <DataGridTextColumn Binding="{Binding Название}"  Width="100" Header="Название"/>
+                        <DataGridTextColumn Binding="{Binding Количество}"  Width="100" Header="Количество"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            <Label Content="Название" HorizontalAlignment="Left" Margin="385,898,0,0" VerticalAlignment="Top" Height="40" Width="94" Foreground="White" FontSize="16" Grid.RowSpan="2"/>
+            <TextBox x:Name="txtFilter" HorizontalAlignment="Left" Height="23" Margin="359,20,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFilter_TextChanged_1"/>
         </Grid>
     </Grid>
 
