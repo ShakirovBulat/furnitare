@@ -52,8 +52,6 @@ namespace furnitare
                     client.Patronymic = PervTB.Text;
                     client.Id_Gender = selectedGender.Id_Gender;
 
-
-
                     user.Login = LoginTB.Text;
                     user.Password = PasswordTB.Password;
                     user.Id_Doljnost = 2;
