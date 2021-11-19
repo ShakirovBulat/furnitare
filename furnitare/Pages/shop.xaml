@@ -41,7 +41,12 @@
             </StackPanel>
 
             <StackPanel>
-                <DataGrid AutoGenerateColumns="False" x:Name="Grof2">
+                <DataGrid AutoGenerateColumns="False" x:Name="Grof2" Background="Transparent" RowBackground="Transparent">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="White"/>
+                        </Style>
+                    </DataGrid.RowStyle>
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Binding="{Binding Id_Shop}" Width="100" Header="Id_Shop"/>

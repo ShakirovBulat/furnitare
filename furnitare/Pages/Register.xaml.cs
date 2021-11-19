@@ -27,7 +27,9 @@ namespace furnitare
             GenderCB.ItemsSource = MainWindow.db.Gender.ToList();
             GenderCB.DisplayMemberPath = "Name";
         }
+        public DateTime DateStart { get; private set; }
 
+        public DateTime DateEnd { get; private set; }
         private void authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
@@ -37,16 +39,15 @@ namespace furnitare
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
+            var selectedGender = GenderCB.SelectedItem as Gender;
+            Sotrudniki client = new Sotrudniki();
+            User user = new User();
             if (lastTB.Text == "" || firsTB.Text == "")
             {
                 MessageBox.Show("Введите все данные");
             } 
             else
             {
-                
-                var selectedGender = GenderCB.SelectedItem as Gender;
-                Sotrudniki client = new Sotrudniki();
-                User user = new User();
                 
 
                 client.FirstName= firsTB.Text;
