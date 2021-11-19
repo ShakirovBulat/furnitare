@@ -7,13 +7,16 @@
       mc:Ignorable="d" 
       Title="Page3" Height="1024" Width="1440">
     <Grid>
-        <Grid Background="White">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="111.png"></ImageBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button x:Name="add" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Сохранить" Click="add_Click">
+                <Button x:Name="add" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Сохранить" Click="add_Click" Background="#FFA27979">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="50"/>
@@ -21,21 +24,21 @@
                     </Button.Resources>
                 </Button>
 
-                <Button x:Name="red" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="red_Click" Content="Удалить">
+                <Button x:Name="red" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10" Click="red_Click" Content="Удалить" Background="#FFA27979">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="50"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="dwq" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="к магазину" Click="dwq_Click">
+                <Button x:Name="dwq" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="к магазину" Click="dwq_Click" Background="#FFA27979">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="50"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="dwq_Copy" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Назад" Click="dwq_Copy_Click">
+                <Button x:Name="dwq_Copy" FontFamily="Arial" FontSize="14" Width="100" Height="40" Margin="10,15" Content="Назад" Click="dwq_Copy_Click" Background="#FFA27979">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="50"/>
