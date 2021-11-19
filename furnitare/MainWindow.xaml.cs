@@ -46,9 +46,9 @@ namespace furnitare
                     {
                         MessageBox.Show($"Привет Пользователь {user.Login}");
                         authUser = user;
-                        FurnitUser fr = new FurnitUser();
+                        FurnitUser frus = new FurnitUser();
                         this.Close();
-                        fr.Show();
+                        frus.Show();
                     }
                     if (user.Password == PasswordTB.Password.Trim() && user.Id_Doljnost == 1)
                     {
