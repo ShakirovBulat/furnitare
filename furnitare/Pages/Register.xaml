@@ -33,12 +33,12 @@
         <Label Content="Фамилия" HorizontalAlignment="Left" Margin="131,224,0,0" VerticalAlignment="Top" FontSize="48"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="131,361,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="131,497,0,0" VerticalAlignment="Top" FontSize="48"/>
-        <DatePicker x:Name="dtdatetime" HorizontalAlignment="Left" Margin="678,459,0,0" VerticalAlignment="Top" Height="24" Width="200"/>
-        <ComboBox x:Name="GenderCB" HorizontalAlignment="Left" Margin="678,512,0,0" VerticalAlignment="Top" Width="120" Height="36" Background="{x:Null}" BorderBrush="#FFAC3030"/>
+        <ComboBox x:Name="GenderCB" HorizontalAlignment="Left" Margin="678,497,0,0" VerticalAlignment="Top" Width="120" Height="36" Background="{x:Null}" BorderBrush="#FFAC3030"/>
         <TextBox x:Name="LoginTB" HorizontalAlignment="Left" Height="36" Margin="131,706,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" FontSize="24" Background="#FFBF5959" BorderBrush="Black"/>
         <Label Content="Login" HorizontalAlignment="Left" Margin="131,626,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
         <PasswordBox x:Name="PasswordTB" HorizontalAlignment="Left" Margin="131,827,0,0" VerticalAlignment="Top" Height="42" Width="444" Background="#FFBF5959" BorderBrush="Black"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="131,752,0,0" VerticalAlignment="Top" FontSize="48" Height="75" RenderTransformOrigin="0.798,-1.253"/>
+        <Label Content="Укажите пол" HorizontalAlignment="Left" Margin="580,423,0,0" VerticalAlignment="Top" FontSize="48"/>
 
     </Grid>
 </Window>

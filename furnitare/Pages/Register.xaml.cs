@@ -27,9 +27,6 @@ namespace furnitare
             GenderCB.ItemsSource = MainWindow.db.Gender.ToList();
             GenderCB.DisplayMemberPath = "Name";
         }
-        public DateTime DateStart { get; private set; }
-
-        public DateTime DateEnd { get; private set; }
         private void authorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
@@ -48,24 +45,29 @@ namespace furnitare
             } 
             else
             {
-                
+                try
+                {
+                    client.FirstName = firsTB.Text;
+                    client.LastName = lastTB.Text;
+                    client.Patronymic = PervTB.Text;
+                    client.Id_Gender = selectedGender.Id_Gender;
 
-                client.FirstName= firsTB.Text;
-                client.LastName = lastTB.Text;
-                client.Patronymic = PervTB.Text;
-                client.BirthDay = dtdatetime.SelectedDate.Value;
-                client.Id_Gender = selectedGender.Id_Gender;
 
-               
 
-                user.Login = LoginTB.Text;
-                user.Password = PasswordTB.Password;
-                user.Id_Doljnost = 2;
-                user.Id_Sotrudniki = client.Id_Sotrudniki;
-                MainWindow.db.User.Add(user);
-                MainWindow.db.Sotrudniki.Add(client);
-                MainWindow.db.SaveChanges();
-                MessageBox.Show("Succesfull");
+                    user.Login = LoginTB.Text;
+                    user.Password = PasswordTB.Password;
+                    user.Id_Doljnost = 2;
+                    user.Id_Sotrudniki = client.Id_Sotrudniki;
+
+                    MainWindow.db.User.Add(user);
+                    MainWindow.db.Sotrudniki.Add(client);
+                    MainWindow.db.SaveChanges();
+                    MessageBox.Show("Succesfull");
+                }
+                catch
+                {
+                    MessageBox.Show("login уже существует");
+                }
             }
         }
     }

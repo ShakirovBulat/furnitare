@@ -81,7 +81,6 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-          <Property Name="BirthDay" Type="date" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -409,7 +408,6 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDay" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Sotrudniki_Gender" FromRole="Sotrudniki" ToRole="Gender" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Sotrudniki" FromRole="Sotrudniki" ToRole="Shop" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Sotrudniki" FromRole="Sotrudniki" ToRole="User" />
@@ -748,7 +746,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
