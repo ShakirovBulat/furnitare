@@ -36,9 +36,6 @@ namespace furnitare
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
-            var selectedGender = GenderCB.SelectedItem as Gender;
-            Sotrudniki client = new Sotrudniki();
-            User user = new User();
             if (lastTB.Text == "" || firsTB.Text == "")
             {
                 MessageBox.Show("Введите все данные");
@@ -47,6 +44,9 @@ namespace furnitare
             {
                 try
                 {
+                    var selectedGender = GenderCB.SelectedItem as Gender;
+                    Sotrudniki client = new Sotrudniki();
+                    User user = new User();
                     client.FirstName = firsTB.Text;
                     client.LastName = lastTB.Text;
                     client.Patronymic = PervTB.Text;
